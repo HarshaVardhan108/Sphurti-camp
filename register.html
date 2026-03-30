@@ -393,7 +393,6 @@
                         <option value="2nd Year">2nd Year</option>
                         <option value="3rd Year">3rd Year</option>
                         <option value="4th Year">4th Year</option>
-                        <option value="5th Year">5th Year</option>
                     </select>
                 </div>
 
@@ -405,7 +404,16 @@
                         <option value="SVCE">SVCE</option>
                         <option value="MBU">MBU</option>
                         <option value="Annamacharya College">Annamacharya College</option>
+                        <option value="Other">Other</option>
                     </select>
+                    <input
+                        class="input"
+                        type="text"
+                        id="collegeOther"
+                        name="collegeOther"
+                        placeholder="Enter your college name"
+                        style="display:none; margin-top:10px;"
+                    >
                 </div>
 
                 <div class="field" style="--idx:8;">
@@ -445,9 +453,20 @@
         const branchInput = document.getElementById("branch");
         const yearInput = document.getElementById("year");
         const collegeInput = document.getElementById("college");
+        const collegeOtherInput = document.getElementById("collegeOther");
         const paymentModeInput = document.getElementById("paymentMode");
         const amountPaidInput = document.getElementById("amountPaid");
         const amountPaidToInput = document.getElementById("amountPaidTo");
+
+        function toggleCollegeOtherField() {
+            const isOther = collegeInput.value === "Other";
+            collegeOtherInput.style.display = isOther ? "block" : "none";
+            collegeOtherInput.required = isOther;
+            if (!isOther) collegeOtherInput.value = "";
+        }
+
+        collegeInput.addEventListener("change", toggleCollegeOtherField);
+        toggleCollegeOtherField();
 
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -458,6 +477,9 @@
             }
 
             const paymentMode = paymentModeInput.value;
+            const collegeValue = collegeInput.value === "Other"
+                ? collegeOtherInput.value.trim()
+                : collegeInput.value.trim();
             const payload = {
                 name: fullNameInput.value.trim(),
                 email: emailInput.value.trim(),
@@ -465,7 +487,7 @@
                 dob: dobInput.value,
                 branch: branchInput.value.trim(),
                 year: yearInput.value.trim(),
-                college: collegeInput.value.trim(),
+                college: collegeValue,
                 paymentMode: paymentMode,
                 cashAmount: amountPaidInput.value.trim() || (paymentMode.toLowerCase().includes("online") ? "Online" : "N/A"),
                 amountPaidTo: amountPaidToInput.value.trim()
