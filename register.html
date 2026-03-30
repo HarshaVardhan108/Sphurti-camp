@@ -441,7 +441,7 @@
     </main>
     <script>
         // Paste your deployed Google Apps Script Web App URL below.
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyVCDy1HmSMLcLYxeelEXpi6m_-jj6MzxkcgcoEtkaLh0FttjP-eXkOqSxNE2CBZdnlaQ/exec";
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxG2ngxRhJYVqlmTYKsDfWmpkrVD-4Z1_spfbAShVZ8jbht8Q9fwtO2S_XKwasbAUZ_vQ/exec";
 
         const form = document.getElementById("registrationForm");
         const submitBtn = document.getElementById("submitBtn");
@@ -487,6 +487,8 @@
                 dob: dobInput.value,
                 branch: branchInput.value.trim(),
                 year: yearInput.value.trim(),
+                Year: yearInput.value.trim(),
+                yearOfStudy: yearInput.value.trim(),
                 college: collegeValue,
                 paymentMode: paymentMode,
                 cashAmount: amountPaidInput.value.trim() || (paymentMode.toLowerCase().includes("online") ? "Online" : "N/A"),
