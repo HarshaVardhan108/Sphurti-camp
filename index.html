@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sphurti Camp 2026 | Inspiration Journey</title>
+    <title>Sphurti Camp | Inspiration Journey</title>
     <link rel="icon" type="image/svg+xml" href="images/camp-icon.svg">
     
     <!-- Tailwind CSS -->
@@ -136,12 +136,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary-500/20 mb-8 reveal animate-float">
                 <span class="flex h-2 w-2 rounded-full bg-primary-500"></span>
-                <span class="text-sm font-medium text-primary-100">Spiritual Youth Experience 2026</span>
+                <span id="heroExperience" class="text-sm font-medium text-primary-100">Spiritual Youth Experience</span>
             </div>
             
             <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 reveal" style="transition-delay: 100ms;">
                 Welcome to <br />
-                <span class="text-gradient">Sphurti Camp</span> 2026
+                <span class="text-gradient">Sphurti Camp</span> <span id="heroCampYear"></span>
             </h1>
             
             <p class="mt-4 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed reveal" style="transition-delay: 200ms;">
@@ -361,7 +361,7 @@
                         <span class="text-sm font-semibold text-primary-400 tracking-wide">Join the Experience</span>
                     </div>
                     <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
-                        Secure Your Spot for <span class="text-gradient block mt-1">Sphurti 2026</span>
+                        Secure Your Spot for <span class="text-gradient block mt-1">Sphurti <span id="detailsCampYear"></span></span>
                     </h2>
                     <p class="text-gray-300 text-lg mb-8 leading-relaxed max-w-xl">
                         Do not miss this life-changing opportunity. Seats are limited to ensure a personal experience for every participant.
@@ -382,7 +382,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-xl font-semibold">Event Dates</h4>
-                                    <p class="text-gray-400 mt-1">11 April to 12 April 2026</p>
+                                    <p class="text-gray-400 mt-1">11 April to 12 April <span id="eventYear"></span></p>
                                 </div>
                             </div>
                             <div class="flex gap-4">
@@ -438,13 +438,27 @@
             </div>
             
             <div class="text-center text-gray-500 text-sm">
-                <p>&copy; 2026 Sphurti Camp. All rights reserved.</p>
+                <p>&copy; <span id="copyrightYear"></span> Sphurti Camp. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts for animations -->
     <script>
+        const currentYear = new Date().getFullYear();
+        const heroExperience = document.getElementById('heroExperience');
+        const heroCampYear = document.getElementById('heroCampYear');
+        const detailsCampYear = document.getElementById('detailsCampYear');
+        const eventYear = document.getElementById('eventYear');
+        const copyrightYear = document.getElementById('copyrightYear');
+
+        document.title = `Sphurti Camp ${currentYear} | Inspiration Journey`;
+        heroExperience.textContent = `Spiritual Youth Experience ${currentYear}`;
+        heroCampYear.textContent = currentYear;
+        detailsCampYear.textContent = currentYear;
+        eventYear.textContent = currentYear;
+        copyrightYear.textContent = currentYear;
+
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {

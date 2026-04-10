@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Success | Sphurti Camp 2026</title>
+    <title>Registration Success | Sphurti Camp</title>
     <link rel="icon" type="image/svg+xml" href="camp-icon.svg">
     <style>
         :root {
@@ -252,7 +252,7 @@
 
             <h1>Registration Successful</h1>
             <p class="message">
-                Thank you for registering for <strong>Sphurti Camp 2026</strong>. We have received your details and will contact you soon with event updates and payment guidance.
+                Thank you for registering for <strong id="successCampYear">Sphurti Camp</strong>. We have received your details and will contact you soon with event updates and payment guidance.
             </p>
 
             <div class="actions">
@@ -261,5 +261,12 @@
             </div>
         </section>
     </main>
+    <script>
+        const currentYear = new Date().getFullYear();
+        const successCampYear = document.getElementById("successCampYear");
+
+        document.title = `Registration Success | Sphurti Camp ${currentYear}`;
+        successCampYear.textContent = `Sphurti Camp ${currentYear}`;
+    </script>
 </body>
 </html>

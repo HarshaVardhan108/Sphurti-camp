@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Sphurti Camp 2026 (Inspiration)</title>
+    <title>Register | Sphurti Camp (Inspiration)</title>
     <link rel="icon" type="image/svg+xml" href="images/camp-icon.svg">
     <style>
         :root {
@@ -356,7 +356,7 @@
 
     <main class="page">
         <section class="card" aria-label="Registration Form">
-            <h1>Sphurti Camp 2026</h1>
+            <h1 id="campTitle">Sphurti Camp</h1>
             <p class="sub">Event Registration Form</p>
 
             <form id="registrationForm">
@@ -448,6 +448,7 @@
         const form = document.getElementById("registrationForm");
         const submitBtn = document.getElementById("submitBtn");
         const formStatus = document.getElementById("formStatus");
+        const campTitle = document.getElementById("campTitle");
         const fullNameInput = document.getElementById("fullName");
         const emailInput = document.getElementById("email");
         const whatsappInput = document.getElementById("whatsapp");
@@ -459,6 +460,10 @@
         const paymentModeInput = document.getElementById("paymentMode");
         const amountPaidInput = document.getElementById("amountPaid");
         const amountPaidToInput = document.getElementById("amountPaidTo");
+        const currentYear = new Date().getFullYear();
+
+        document.title = `Register | Sphurti Camp ${currentYear} (Inspiration)`;
+        campTitle.textContent = `Sphurti Camp ${currentYear}`;
 
         function toggleCollegeOtherField() {
             const isOther = collegeInput.value === "Other";
